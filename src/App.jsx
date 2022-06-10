@@ -18,7 +18,7 @@ function App() {
     types: [],
   });
   
-  const opciones = async (item, url = "https://api.genshin.dev/") => {
+  const fetchGenshinApi = async (item, url = "https://api.genshin.dev/") => {
     const respuesta = await  fetch(url);
     const respJson = await respuesta.json();
     if (item === "types"){
@@ -36,7 +36,7 @@ function App() {
 
   fetchGenshinApi("types");
 
-  const handleChangeType = (target) => {
+  const handleChangeType = ({target}) => {
     const url = `https://api.genshin.dev/${target.value}`;
     fetchGenshinApi(target.value, url);
     console.log(genshinState);
